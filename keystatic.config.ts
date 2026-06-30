@@ -24,7 +24,7 @@ import { BrandMarkComponent } from "./.keystatic/mark";
 export default config({
 	storage: {
 		kind: "github",
-		repo: "hashir1313/ahadanimates.com",
+		repo: import.meta.env.PUBLIC_REPO || "hashir1313/ahadanimates.com",
 	},
 	ui: {
 		brand: {

@@ -16,6 +16,11 @@ export default defineConfig({
 	site: siteUrl,
 	output: "hybrid",
 	adapter: cloudflare({
+		platformProxy: {
+			enabled: true,
+			configPath: "wrangler.jsonc",
+			experimentalJsonConfig: true,
+		},
 		imageService: "compile",
 		experimental: {
 			manualChunks: ["sharp"],
@@ -28,6 +33,11 @@ export default defineConfig({
 	vite: {
 		define: {
 			__DATE__: `'${new Date().toISOString()}'`,
+		},
+		resolve: {
+			alias: {
+				"react-dom/server": "react-dom/server.edge",
+			},
 		},
 	},
 	integrations: [
