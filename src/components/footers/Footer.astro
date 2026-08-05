@@ -10,7 +10,15 @@ const pages = await getCollection("pages");
 const services = await getCollection("services");
 
 const topInfoPages = pages
-	.filter((page) => page.data.type === "informational")
+	.filter((page) => page.data.type === "informational" && page.slug !== "news")
+	.map((page) => ({
+		...page,
+		data: {
+			...page.data,
+			title: page.slug === "homepage" ? "Home" : page.data.title,
+		},
+		slug: page.slug === "homepage" ? "" : page.slug,
+	}))
 	.slice(0, 6);
 
 const topServices = services.slice(0, 6);

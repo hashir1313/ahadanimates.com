@@ -55,6 +55,7 @@ const servicesCollection = defineCollection({
 			pubDate: z.date(),
 			lastUpdateDate: z.date(),
 			cover: z.optional(image()),
+			coverImage: z.optional(image()),
 			description: z.string(),
 			hidden: z.optional(z.boolean()),
 		}),
